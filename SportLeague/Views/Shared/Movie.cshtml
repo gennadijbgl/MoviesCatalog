@@ -1,0 +1,40 @@
+﻿@model SportLeague.Models.Movies
+
+<div class="panel panel-default col col-md-3 nopadding" >
+
+    <a href='@Url.Action("Details", "Movies", new {id=Model.Id})'>
+        <img src="@Url.Content("~/Media/Posters/" + Model.PosterURL)" class="thumbnail" style="border:none" alt="@Model.Title">
+    </a>
+
+    <div class="dropdown actions">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href='@Url.Action("Details", "Movies", new {id=Model.Id})'>Details</a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+            <li><a href='@Url.Action("Edit", "Movies", new { id = Model.Id })'>Edit</a></li>
+            }
+        </ul>
+    </div>
+    <div class="panel-heading">
+        <h3 class="panel-title">@Model.Title</h3>
+
+
+    </div>
+    <div class="panel-body">
+
+        <p><strong>Year: </strong> @Model.Year</p>
+        <p><strong>Directed by: </strong>@Model.Director</p>
+        <p><strong>Posted by: </strong>@Model.Users.Login</p>
+
+        <p>
+            <strong>Description: </strong>
+            @Model.Description
+        </p>
+
+    </div>
+
+</div>
+

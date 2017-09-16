@@ -1,0 +1,19 @@
+﻿@model IEnumerable<SportLeague.Models.Movies>
+
+<br />
+
+<div class="col col-md-12 clearfix">
+    @foreach (var item in Model)
+    {
+        Html.RenderPartial("Movie", item);
+    }
+
+</div>
+
+@{
+    Html.RenderPartial("Pagination");
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/mainjs")
+}
